@@ -10,6 +10,7 @@
 </head>
 
 <body>
+    <button id="toggle-theme" aria-label="Alternar tema">🌙</button>
     <header class="hero">
         <video class="background-video" autoplay muted loop playsinline preload="auto">
             <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm" type="video/webm" />
@@ -23,7 +24,7 @@
         </div>
     </header>
 
-    <section id="solucoes" class="cards">
+    <section id="solucoes" class="sections">
         <h2>Soluções</h2>
         <div class="card-grid">
             <div class="card">
@@ -45,7 +46,28 @@
         </div>
     </section>
 
-    <section class="testimonials">
+    <section class="sections">
+        <h2>Qual recurso do CodeRabbit você mais usaria?</h2>
+        <select id="feature-select" required>
+            <option value="" disabled selected>Selecione uma opção</option>
+            <option value="Revisão">Revisão de Código</option>
+            <option value="Testes">Testes Unitários</option>
+            <option value="Docs">Documentação Automática</option>
+          </select>
+          <button class="btn" id="submit-btn">Enviar</button>
+          <p id="vote-result" style="display:none;"></p> 
+    </section>
+
+    <section class="sections">
+        <h2>Assine nossa Newsletter</h2>
+        <form id="newsletter-form">
+            <input type="email" placeholder="Digite seu email" required />
+            <button type="submit" class="btn">Inscreva se</button>
+        </form>
+        <p id="newsletter-feedback" style="display:none;">Inscrição realizada com sucesso!</p>
+    </section>
+
+    <section id="testimonials" class="sections">
         <h2>O que dizem nossos clientes - Fictício</h2>
         <div class="testimonial-grid">
             <blockquote>“A IA CodeRabbit revolucionou nosso atendimento ao cliente.”</blockquote>
@@ -57,6 +79,7 @@
     <footer>
         <p>© 2025 IA e Possibilidades - Desenvolvido por Renata Pulz</p>
     </footer>
+    <script src="script.js"></script>
 </body>
 
 </html>
