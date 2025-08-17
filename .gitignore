@@ -1,0 +1,9 @@
+node_modules
+
+# Variável de ambiente
+*.env
+
+# Cypress testes
+cypress/reports
+cypress/screenshots
+cypress/videos

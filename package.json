@@ -1,0 +1,20 @@
+{
+  "name": "demo-coderabbit",
+  "version": "1.0.0",
+  "description": "Projeto demo do Coderabbit, usando Browser-use para criar e manter testes automatizados, Cypress para execução de testes e deploy no Netlify com CI/CD via GitHub Actions.",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx serve .",
+    "test": "cypress run",
+    "cypress:open": "cypress open",
+    "build": "echo 'Nada para buildar'"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^14.5.4",
+    "cypress-mochawesome-reporter": "^4.0.0",
+    "serve": "^14.2.1"
+  }
+}
