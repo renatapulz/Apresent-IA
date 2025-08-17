@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <title>Enquete</title>
+    <style>
+      #vote-result { display: none; transition: opacity 0.3s ease; }
+      #results { display: none; }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <select id="feature-select">
+        <option value="">-- Selecione --</option>
+        <option value="Revisão">Revisão</option>
+        <option value="Testes">Testes</option>
+        <option value="Docs">Docs</option>
+      </select>
+      <button id="submit-btn">Votar</button>
+      <div id="vote-result" aria-live="polite"></div>
+      <button id="results-btn">Ver resultados</button>
+      <div id="results" role="region" aria-label="Resultados da Enquete"></div>
+    </div>
+  </body>
+</html>
