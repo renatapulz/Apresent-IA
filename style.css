@@ -237,6 +237,28 @@
     font-size: 0.9rem;
   }
 
+  .socials {
+    display: flexbox;
+    justify-content: middle;
+    gap: 10;
+    margin-top: 10px;
+  }
+
+  .socials a {
+    display: inline-flex;
+    width: 28px;
+    height: 28px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .socials img {
+  width: 24px;
+  height: 24px;
+  margin: 0 6px;
+  filter: invert(1);
+  }
+
   /* Dark mode seções */
   body.dark-mode .sections {
     background: #22303c;
