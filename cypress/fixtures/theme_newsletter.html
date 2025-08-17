@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Theme and Newsletter Test</title>
+  <style>
+    body.dark-mode { background: #111; color: #eee; }
+    #newsletter-feedback { display: none; }
+  </style>
+</head>
+<body>
+  <button id="toggle-theme" type="button">🌙</button>
+
+  <form id="newsletter-form">
+    <input id="email" name="email" type="email" value="test@example.com" />
+    <button type="submit" id="submit-btn">Submit</button>
+  </form>
+
+  <div id="newsletter-feedback">Thanks for subscribing!</div>
+
+  <script src="/public/js/dom-script.js"></script>
+</body>
+</html>

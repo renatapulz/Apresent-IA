@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8" />
+    <title>Enquete</title>
+    <style>
+      #vote-result { display: none; opacity: 0; transition: opacity 0.3s; }
+      #results { display: none; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <label for="feature-select">Escolha uma opção</label>
+      <select id="feature-select">
+        <option value="" selected>Selecione...</option>
+        <option value="Revisão">Revisão</option>
+        <option value="Testes">Testes</option>
+        <option value="Docs">Docs</option>
+      </select>
+      <button id="submit-btn" type="button">Votar</button>
+      <button id="results-btn" type="button">Ver resultados</button>
+      <div id="vote-result" aria-live="polite"></div>
+      <div id="results" aria-live="polite"></div>
+    </main>
+    <script src="../../public/poll.js"></script>
+  </body>
+</html>
