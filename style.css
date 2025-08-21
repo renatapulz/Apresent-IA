@@ -203,6 +203,13 @@
     white-space: nowrap;
   }
 
+  /* news */
+  #ai-news ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
   /* Testimonials */
   #testimonials h2 {
     font-size: 2.4rem;
