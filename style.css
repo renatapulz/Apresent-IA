@@ -167,6 +167,15 @@
     transition: opacity 0.3s ease;
   }
 
+  #results ul {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  #results li {
+    margin: 4px 0;
+  }
+
   /* newsletter */
   #newsletter-form {
     display: flex;

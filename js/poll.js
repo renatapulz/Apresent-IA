@@ -1,0 +1,57 @@
+// Recupera votos do localStorage ou inicia zerado
+let votos = JSON.parse(localStorage.getItem("votos")) || {
+  Revisão: 0,
+  Testes: 0,
+  Docs: 0,
+};
+
+const select = document.getElementById("feature-select");
+const submitBtn = document.getElementById("submit-btn");
+const result = document.getElementById("vote-result");
+const resultsDiv = document.getElementById("results");
+const resultsBtn = document.getElementById("results-btn");
+
+// Submeter voto
+submitBtn.addEventListener("click", () => {
+  const choice = select.value;
+
+  if (choice) {
+    votos[choice] = (votos[choice] || 0) + 1;
+    localStorage.setItem("votos", JSON.stringify(votos));
+    result.textContent = `Você votou em: ${choice}`;
+  } else {
+    result.textContent = "Por favor, selecione uma opção.";
+  }
+
+  result.style.display = "block";
+  result.style.opacity = "1";
+
+  setTimeout(() => {
+    result.style.opacity = "0";
+    setTimeout(() => {
+      result.style.display = "none";
+      result.textContent = "";
+      select.value = "";
+    }, 300);
+  }, 2000);
+});
+
+// Ver resultados
+resultsBtn.addEventListener("click", () => {
+  resultsDiv.replaceChildren();
+  const h3 = document.createElement("h3");
+  h3.textContent = "Resultados da Enquete:";
+  const ul = document.createElement("ul");
+  [
+    ["Revisão de Código", votos["Revisão"]],
+    ["Testes Unitários", votos["Testes"]],
+    ["Documentação Automática", votos["Docs"]],
+  ].forEach(([label, count]) => {
+    const li = document.createElement("li");
+    li.textContent = `${label}: ${count}`;
+    ul.appendChild(li);
+  });
+  resultsDiv.append(h3, ul);
+  resultsDiv.style.display =
+    resultsDiv.style.display === "none" ? "block" : "none";
+});

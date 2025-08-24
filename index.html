@@ -53,9 +53,11 @@
             <option value="Revisão">Revisão de Código</option>
             <option value="Testes">Testes Unitários</option>
             <option value="Docs">Documentação Automática</option>
-          </select>
-          <button class="btn" id="submit-btn">Enviar</button>
-          <p id="vote-result" style="display:none;"></p> 
+        </select>
+        <button class="btn" id="submit-btn">Enviar</button>
+        <button class="btn" id="results-btn">Ver Resultados</button>
+        <p id="vote-result" style="display:none;" aria-live="polite"></p>
+        <div id="results" style="display:none; margin-top:10px;"></div>
     </section>
 
     <section class="sections">
@@ -79,7 +81,8 @@
     <footer>
         <p>© 2025 IA e Possibilidades - Desenvolvido por Renata Pulz</p>
     </footer>
-    <script src="script.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/poll.js"></script>
 </body>
 
 </html>
