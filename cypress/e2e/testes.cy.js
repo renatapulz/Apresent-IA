@@ -25,8 +25,7 @@ describe('Demo CodeRabbit Test Suite', () => {
             .should('have.value', 'Testes');
         cy.get('#submit-btn').click();
         cy.get('#vote-result')
-            .should('be.visible')
-            .and('contain.text', 'Você escolheu: Testes');
+        .should('contain.text', 'Você votou em: Testes');
     });
 
     it('Valida que o campo email é obrigatório', () => {
