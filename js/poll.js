@@ -1,9 +1,16 @@
-// Recupera votos do localStorage ou inicia zerado
-let votos = JSON.parse(localStorage.getItem("votos")) || {
-  Revisão: 0,
-  Testes: 0,
-  Docs: 0,
-};
+// Recupera votos do localStorage de forma segura ou inicia zerado
+const raw = localStorage.getItem("votos");
+let votos = { Revisão: 0, Testes: 0, Docs: 0 };
+if (raw) {
+  try {
+    const parsed = JSON.parse(raw);
+    votos.Revisão = Number(parsed?.Revisão) || 0;
+    votos.Testes  = Number(parsed?.Testes)  || 0;
+    votos.Docs    = Number(parsed?.Docs)    || 0;
+  } catch (_) {
+    // Mantém defaults se o JSON estiver inválido/corrompido
+  }
+}
 
 const select = document.getElementById("feature-select");
 const submitBtn = document.getElementById("submit-btn");
