@@ -38,14 +38,20 @@ submitBtn.addEventListener("click", () => {
 
 // Ver resultados
 resultsBtn.addEventListener("click", () => {
-  resultsDiv.innerHTML = `
-    <h3>Resultados da Enquete:</h3>
-    <ul>
-      <li>Revisão de Código: ${votos["Revisão"]}</li>
-      <li>Testes Unitários: ${votos["Testes"]}</li>
-      <li>Documentação Automática: ${votos["Docs"]}</li>
-    </ul>
-  `;
+  resultsDiv.replaceChildren();
+  const h3 = document.createElement("h3");
+  h3.textContent = "Resultados da Enquete:";
+  const ul = document.createElement("ul");
+  [
+    ["Revisão de Código", votos["Revisão"]],
+    ["Testes Unitários", votos["Testes"]],
+    ["Documentação Automática", votos["Docs"]],
+  ].forEach(([label, count]) => {
+    const li = document.createElement("li");
+    li.textContent = `${label}: ${count}`;
+    ul.appendChild(li);
+  });
+  resultsDiv.append(h3, ul);
   resultsDiv.style.display =
     resultsDiv.style.display === "none" ? "block" : "none";
 });
