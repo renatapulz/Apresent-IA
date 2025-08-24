@@ -12,7 +12,10 @@ async function loadAINews() {
       hits.map(async (item) => {
         const rawTitle = item.title ?? item.story_title ?? "Sem título";
         const translatedTitle = await translateText(rawTitle, "pt").catch(() => rawTitle);
-        const url = item.url ?? `https://news.ycombinator.com/item?id=${item.objectID}`;
+        const candidateUrl = item.url ?? `https://news.ycombinator.com/item?id=${item.objectID}`;
+        const url = safeHttpUrl(candidateUrl)
+          ? candidateUrl
+          : `https://news.ycombinator.com/item?id=${item.objectID}`;
         return { translatedTitle, url };
       })
     );
