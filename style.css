@@ -245,9 +245,10 @@
   }
 
   .socials {
-    display: flexbox;
-    justify-content: middle;
-    gap: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
     margin-top: 10px;
   }
 

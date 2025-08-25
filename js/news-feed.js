@@ -1,5 +1,5 @@
-// Helper para URLs seguras
-function safeHttpUrl(u) {
+// Helper para URLs seguras (boolean)
+function isHttpUrl(u) {
   try {
     const parsed = new URL(u, window.location.origin);
     return parsed.protocol === "https:" || parsed.protocol === "http:";
@@ -10,20 +10,25 @@ function safeHttpUrl(u) {
 
 async function loadAINews() {
   try {
-    const response = await fetch("https://hn.algolia.com/api/v1/search?query=AI&tags=story");
+    const response = await fetch("https://hn.algolia.com/api/v1/search?query=AI&tags=story&hitsPerPage=5");
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     const data = await response.json();
 
     const newsContainer = document.getElementById("ai-news");
-    const list = document.createElement("ul");
+    if (!newsContainer) {
+      console.warn("#ai-news não encontrado; abortando render.");
+      return;
+    }
 
-    const hits = (data?.hits ?? []).slice(0, 5);
+    const list = document.createElement("ul");
+    const hits = data?.hits ?? [];
+
     const items = await Promise.all(
       hits.map(async (item) => {
         const rawTitle = item.title ?? item.story_title ?? "Sem título";
         const translatedTitle = await translateText(rawTitle, "pt").catch(() => rawTitle);
         const candidateUrl = item.url ?? `https://news.ycombinator.com/item?id=${item.objectID}`;
-        const url = safeHttpUrl(candidateUrl)
+        const url = isHttpUrl(candidateUrl)
           ? candidateUrl
           : `https://news.ycombinator.com/item?id=${item.objectID}`;
         return { translatedTitle, url };
@@ -45,6 +50,10 @@ async function loadAINews() {
 
   } catch (error) {
     console.error("Erro ao carregar notícias de IA", error);
+    const container = document.getElementById("ai-news");
+    if (container) {
+      container.textContent = "Não foi possível carregar as notícias agora.";
+    }
   }
 }
 
